@@ -5,6 +5,9 @@
  */
 package adtreto0;
 
+import clases.Menu;
+import sun.applet.Main;
+
 /**
  *
  * @author Gonzalo
@@ -16,6 +19,8 @@ public class ADTReto0 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Menu menu = new Menu();
+        menu.visualizarMenu(new Controlador());
     }
     
 }

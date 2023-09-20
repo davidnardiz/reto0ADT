@@ -7,8 +7,10 @@ package clases;
 
 /**
  *
- * @author Gonzalo
+ * @author Gonzalo, David
  */
 public enum Dificultad {
-    
+    ALTA,
+    MEDIA,
+    BAJA
 }
