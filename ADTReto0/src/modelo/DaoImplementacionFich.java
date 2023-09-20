@@ -5,49 +5,38 @@
  */
 package modelo;
 
+import clases.ConvocatoriaExamen;
+import clases.Enunciado;
+import clases.UnidadDidactica;
+
 /**
  *
- * @author Gonzalo
+ * @author 2dam
  */
-public class ImplementacionFich implements DAOInterface{
+public class DaoImplementacionFich implements Dao{
 
     @Override
-    public void crearUnidadDidactica() {
+    public void crearUnidadDidactica(UnidadDidactica ud) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void crearConvocatoria() {
+    public void crearConvocatoria(ConvocatoriaExamen ce) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void crearEnunciado() {
+    public void crearEnunciado(Enunciado e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void consultarConvocatoria() {
+    public ConvocatoriaExamen consultarConvocatoria(String convocatoria) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void consultarEnunciado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void visualizarEnuciado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void asociarEnunciado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void asociarConvocatoria() {
+    public Enunciado consultarEnunciado(String idenunciado) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

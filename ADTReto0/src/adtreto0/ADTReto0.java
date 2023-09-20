@@ -5,10 +5,8 @@
  */
 package adtreto0;
 
-
-import modelo.DAOFactoria;
-import modelo.DAOInterface;
-
+import clases.Menu;
+import sun.applet.Main;
 
 /**
  *
@@ -21,10 +19,8 @@ public class ADTReto0 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        DAOInterface daoBD = DAOFactoria.crearDaoBD();
-        DAOInterface daoFich = DAOFactoria.crearDaoFich();
         Menu menu = new Menu();
-        menu.visualizarMenu();
+        menu.visualizarMenu(new Controlador());
     }
     
 }

@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package adtreto0;
+
+import modelo.DAOFactoria;
+import modelo.Dao;
 
 /**
  *
  * @author 2dam
  */
-public class DAOFactoria {
-    public static Dao crearDaoBD(){
-        return new DaoImplementacionBD();
-    }
+public class Controlador {
+    Dao daoBD = DAOFactoria.crearDaoBD();
+    Dao daoFIch = DAOFactoria.crearDaoFich();
     
-    public static Dao crearDaoFich(){
-        return new DaoImplementacionFich();
-    }
     
 }
