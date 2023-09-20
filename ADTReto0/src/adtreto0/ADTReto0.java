@@ -5,6 +5,11 @@
  */
 package adtreto0;
 
+
+import modelo.DAOFactoria;
+import modelo.DAOInterface;
+
+
 /**
  *
  * @author Gonzalo
@@ -16,6 +21,10 @@ public class ADTReto0 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        DAOInterface daoBD = DAOFactoria.crearDaoBD();
+        DAOInterface daoFich = DAOFactoria.crearDaoFich();
+        Menu menu = new Menu();
+        menu.visualizarMenu();
     }
     
 }
