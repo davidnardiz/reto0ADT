@@ -8,6 +8,8 @@ package modelo;
 import clases.ConvocatoriaExamen;
 import clases.Enunciado;
 import clases.UnidadDidactica;
+import java.io.File;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -15,14 +17,20 @@ import clases.UnidadDidactica;
  */
 public class DaoImplementacionFich implements Dao{
 
+    File fich = new File("convocatorias.obj");
+    
     @Override
     public void crearUnidadDidactica(UnidadDidactica ud) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    //fich
     @Override
     public void crearConvocatoria(ConvocatoriaExamen ce) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ObjectOutputStream oos;
+        
+        
+        
     }
 
     @Override
@@ -30,6 +38,7 @@ public class DaoImplementacionFich implements Dao{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    //fich
     @Override
     public ConvocatoriaExamen consultarConvocatoria(String convocatoria) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
