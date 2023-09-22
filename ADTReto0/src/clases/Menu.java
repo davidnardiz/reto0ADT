@@ -6,6 +6,9 @@
 package clases;
 
 import adtreto0.Controlador;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -24,12 +27,16 @@ public class Menu {
                     crearUnidadDidactica(controlador);
                     break;
                 case 2:
+                    crearConvocatoriaExamen(controlador);
                     break;
                 case 3:
+                    crearEnunciado(controlador);
                     break;
                 case 4:
+                    consultarConvocatoria(controlador);
                     break;
                 case 5:
+                    consultarEnunciado(controlador);
                     break;
                 case 6:
                     break;
@@ -41,9 +48,88 @@ public class Menu {
         } while (opc != 9);
     }
 
-    private void crearUnidadDidactica(Controlador controlador) {
+    /**
+     * Se crea una instancia de la clase UnidadDidactica y se configuran los datos de la unidad didáctica utilizando
+     * el método setDatos. Se llama al método del controlador para crear la unidad didáctica en la base de datos.
+     * @param controlador 
+     */
+    private void crearUnidadDidactica(Controlador controlador){
         UnidadDidactica ud = new UnidadDidactica();
         ud.setDatos();
+        controlador.crearUnidadDidactica(ud);
+        System.out.println("Unidad Didactica creada correctamente");
         
     }
+    /**
+     * Se crea una instancia de la clase ConvocatoriaExamen y se configuran los datos de la convocatoria utilizando el método setDatos. 
+     * Se llama al método del controlador para crear la convocatoria en la base de datos
+     * @param controlador 
+     */
+    private void crearConvocatoriaExamen(Controlador controlador) {
+        ConvocatoriaExamen convocatoria = new ConvocatoriaExamen();
+        convocatoria.setDatos();
+        controlador.crearConvocatoria(convocatoria);
+        System.out.println("Convocatoria creada correctamente");
+    }
+    /**
+     * Se crea una instancia de la clase Enunciado y se configuran los datos del enunciado utilizando el método setDatos. 
+     * Se llama al método del controlador para crear el enunciado en la base de datos
+     * @param controlador 
+     */
+    private void crearEnunciado(Controlador controlador) {
+        Enunciado enunciado = new Enunciado();
+        enunciado.setDatos();
+        controlador.crearEnunciado(enunciado);
+        System.out.println("Enunciado creado correctamente.");
+    }
+    
+    /**
+     * Se solicita al usuario que ingrese el id de la convocatoria que desea consultar y se llama al método del controlador para consultar la convocatoria.
+     * Después se verifica si la convocatoria existe: si existe se la devuelve al usuario, sino le informa de que no existe.
+     * @param controlador 
+     */
+    private void consultarConvocatoria(Controlador controlador) {
+    String idConvocatoria = utilidades.Utilidades.introducirCadena("Por favor, introduce identificador de la convocatoria: ");
+    ConvocatoriaExamen convocatoria = controlador.consultarConvocatoria(idConvocatoria);
+    if (convocatoria != null) {
+        System.out.println("Detalles de la convocatoria: \n"+convocatoria.toString());
+    } else {
+        System.out.println("Lo siento, la convocatoria no existe.");
+    }
+}
+     
+    /**
+     * Se solicita al usuario que ingrese el id de la enunciado que desea consultar y se llama al método del controlador para consultar el enunciado.
+     * Después se verifica si el enunciado existe: si existe se lo devuelve al usuario, sino le informa de que no existe.
+     * @param controlador 
+     */
+    private void consultarEnunciado(Controlador controlador) {
+    String idEnunciado = utilidades.Utilidades.introducirCadena("Por favor introduce identificador de la convocatoria: ");
+    Enunciado enunciado = controlador.consultarEnunciado(idEnunciado);
+    if (enunciado != null) {
+        System.out.println("Detalles del enunciado:");
+        System.out.println(enunciado.toString());
+    } else {
+        System.out.println("Lo siento, el enunciado no existe.");
+    }
+}
+    public void visualizarEnunciado(Controlador controlador) {
+    int idEnunciado = utilidades.Utilidades.leerInt("Introduce el ID del enunciado que deseas visualizar: ");
+    Enunciado enunciado = controlador.consultarEnunciado(idEnunciado);
+    if (enunciado != null) {
+        try {
+            File archivo = new File(enunciado.getRuta());
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().open(archivo);
+            } else {
+                System.out.println("No es posible abrir el documento dado que no existe.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error al abrir el documento: " + e.getMessage());
+        }
+    } else {
+        System.out.println("El enunciado no se encontró.");
+    }
+}
+
 }
