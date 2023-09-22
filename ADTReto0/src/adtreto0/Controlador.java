@@ -8,6 +8,8 @@ package adtreto0;
 import clases.ConvocatoriaExamen;
 import clases.Enunciado;
 import clases.UnidadDidactica;
+import excepciones.ExcepcionConsultar;
+import excepciones.ExcepcionCreacion;
 import java.io.File;
 import modelo.DAOFactoria;
 import modelo.Dao;
@@ -25,7 +27,7 @@ public class Controlador {
     }
 
    
-    public void crearConvocatoria(ConvocatoriaExamen ce) {
+    public void crearConvocatoria(ConvocatoriaExamen ce) throws ExcepcionCreacion {
         daoFich.crearConvocatoria(ce);
     }
 
@@ -35,13 +37,13 @@ public class Controlador {
     }
 
    
-    public ConvocatoriaExamen consultarConvocatoria(String convocatoria) {
+    public ConvocatoriaExamen consultarConvocatoria(String convocatoria) throws ExcepcionConsultar {
         ConvocatoriaExamen ce = daoFich.consultarConvocatoria(convocatoria);
         return ce;
     }
 
     
-    public Enunciado consultarEnunciado(String idEnunciado) {
+    public Enunciado consultarEnunciado(int idEnunciado) {
         Enunciado e = daoBD.consultarEnunciado(idEnunciado);
         return e;
     }

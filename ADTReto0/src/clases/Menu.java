@@ -6,6 +6,9 @@
 package clases;
 
 import adtreto0.Controlador;
+import excepciones.ExcepcionConsultar;
+import excepciones.ExcepcionCreacion;
+import utilidades.Utilidades;
 
 /**
  *
@@ -13,7 +16,7 @@ import adtreto0.Controlador;
  */
 public class Menu {
 
-    public void visualizarMenu(Controlador controlador) {
+    public void visualizarMenu(Controlador controlador) throws ExcepcionCreacion, ExcepcionConsultar {
         int opc;
 
         do {
@@ -26,8 +29,10 @@ public class Menu {
                 case 2:
                     break;
                 case 3:
+                    crearConvocatoria(controlador);
                     break;
                 case 4:
+                    consultarConvocatoria(controlador);
                     break;
                 case 5:
                     break;
@@ -44,6 +49,19 @@ public class Menu {
     private void crearUnidadDidactica(Controlador controlador) {
         UnidadDidactica ud = new UnidadDidactica();
         ud.setDatos();
+        controlador.crearUnidadDidactica(ud);
         
+    }
+
+    private void crearConvocatoria(Controlador controlador) throws ExcepcionCreacion {
+        ConvocatoriaExamen ce = new ConvocatoriaExamen();
+        ce.setDatos();
+        controlador.crearConvocatoria(ce);
+    }
+
+    private void consultarConvocatoria(Controlador controlador) throws ExcepcionConsultar {
+        String convocatoria = Utilidades.introducirCadena("Introduce la convocatoria deseada");
+        ConvocatoriaExamen ce = controlador.consultarConvocatoria(convocatoria);
+        ce.toString();
     }
 }

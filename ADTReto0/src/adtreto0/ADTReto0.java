@@ -6,6 +6,8 @@
 package adtreto0;
 
 import clases.Menu;
+import excepciones.ExcepcionConsultar;
+import excepciones.ExcepcionCreacion;
 import sun.applet.Main;
 
 /**
@@ -17,7 +19,7 @@ public class ADTReto0 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExcepcionCreacion, ExcepcionConsultar {
         // TODO code application logic here
         Menu menu = new Menu();
         menu.visualizarMenu(new Controlador());

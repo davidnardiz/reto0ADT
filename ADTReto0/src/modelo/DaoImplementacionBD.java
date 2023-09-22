@@ -33,10 +33,10 @@ public class DaoImplementacionBD implements Dao{
     @Override
     public ConvocatoriaExamen consultarConvocatoria(String convocatoria) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    } 
 
     @Override
-    public Enunciado consultarEnunciado(String idenunciado) {
+    public Enunciado consultarEnunciado(int idenunciado) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -8,6 +8,8 @@ package modelo;
 import clases.ConvocatoriaExamen;
 import clases.Enunciado;
 import clases.UnidadDidactica;
+import excepciones.ExcepcionConsultar;
+import excepciones.ExcepcionCreacion;
 
 /**
  *
@@ -25,7 +27,7 @@ public interface Dao {
      * Método que crea una Convocatoria en el fichero a partir de la partir de la Convocatoria.
      * @param ce la convocatoria que vamos a añadir al fichero. 
      */
-    public void crearConvocatoria(ConvocatoriaExamen ce);
+    public void crearConvocatoria(ConvocatoriaExamen ce) throws ExcepcionCreacion;
     
     /**
      * Método que crea un Enunciado en la base de datos partir del propio Enunciado.
@@ -38,14 +40,14 @@ public interface Dao {
      * @param convocatoria
      * @return 
      */
-    public ConvocatoriaExamen consultarConvocatoria(String convocatoria);
+    public ConvocatoriaExamen consultarConvocatoria(String convocatoria) throws ExcepcionConsultar;
     
     /**
      * 
      * @param idenunciado
      * @return 
      */
-    public Enunciado consultarEnunciado(String idenunciado);
+    public Enunciado consultarEnunciado(int idenunciado);
     
     
 }
