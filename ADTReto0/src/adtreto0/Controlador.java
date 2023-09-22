@@ -41,7 +41,7 @@ public class Controlador {
     }
 
     
-    public Enunciado consultarEnunciado(String idEnunciado) {
+    public Enunciado consultarEnunciado(int idEnunciado) {
         Enunciado e = daoBD.consultarEnunciado(idEnunciado);
         return e;
     }
