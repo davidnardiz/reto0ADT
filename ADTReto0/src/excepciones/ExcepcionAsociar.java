@@ -7,13 +7,13 @@ package excepciones;
 
 /**
  *
- * @author 2dam
+ * @author David.
  */
-public class ExcepcionConsultar extends Exception {
+public class ExcepcionAsociar extends Exception {
 
     private String mensaje;
 
-    public ExcepcionConsultar(String mensaje) {
+    public ExcepcionAsociar(String mensaje) {
         this.mensaje = mensaje;
     }
 

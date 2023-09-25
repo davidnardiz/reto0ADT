@@ -11,21 +11,13 @@ package excepciones;
  */
 public class ExcepcionCreacion extends Exception {
 
-    /**
-     * Creates a new instance of <code>excepcionCreacion</code> without detail
-     * message.
-     */
-    public ExcepcionCreacion() {
-        super();
+    private String mensaje;
+
+    public ExcepcionCreacion(String mensaje) {
+        this.mensaje = mensaje;
     }
 
-    /**
-     * Constructs an instance of <code>excepcionCreacion</code> with the
-     * specified detail message.
-     *
-     * @param msg the detail message.
-     */
-    public ExcepcionCreacion(String msg) {
-        super(msg);
+    public void mostrarError() {
+        System.out.println(mensaje);
     }
 }

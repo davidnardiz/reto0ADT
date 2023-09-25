@@ -5,19 +5,22 @@
  */
 package clases;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import utilidades.Utilidades;
 
 /**
  *
  * @author Gonzalo, David
  */
-public class ConvocatoriaExamen {
+public class ConvocatoriaExamen implements Serializable {
 
     //Propiedades de la clase.
     private String convocatoria;
     private String descripcion;
     private LocalDate fecha;
     private String curso;
+    private int idEnunciado;
 
     //Getters y Setters
     public String getConvocatoria() {
@@ -52,10 +55,18 @@ public class ConvocatoriaExamen {
         this.curso = curso;
     }
 
+    public int getIdEnunciado() {
+        return idEnunciado;
+    }
+
+    public void setIdEnunciado(int idEnunciado) {
+        this.idEnunciado = idEnunciado;
+    }
+
     //ToString
     @Override
     public String toString() {
-        return "ConvocatoriaExamen{" + "convocatoria=" + convocatoria + ", descripcion=" + descripcion + ", fecha=" + fecha + ", curso=" + curso + '}';
+        return "ConvocatoriaExamen{" + "convocatoria=" + convocatoria + ", descripcion=" + descripcion + ", fecha=" + fecha + ", curso=" + curso + ", idEnunciado=" + idEnunciado + '}';
     }
 
     public void setDatos() {

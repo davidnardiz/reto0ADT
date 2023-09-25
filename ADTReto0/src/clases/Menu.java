@@ -6,8 +6,11 @@
 package clases;
 
 import adtreto0.Controlador;
+import excepciones.ExcepcionAsociar;
 import excepciones.ExcepcionConsultar;
 import excepciones.ExcepcionCreacion;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utilidades.Utilidades;
 
 /**
@@ -16,7 +19,7 @@ import utilidades.Utilidades;
  */
 public class Menu {
 
-    public void visualizarMenu(Controlador controlador) throws ExcepcionCreacion, ExcepcionConsultar {
+    public void visualizarMenu(Controlador controlador) throws ExcepcionAsociar {
         int opc;
 
         do {
@@ -27,9 +30,10 @@ public class Menu {
                     crearUnidadDidactica(controlador);
                     break;
                 case 2:
+                    crearConvocatoria(controlador);
                     break;
                 case 3:
-                    crearConvocatoria(controlador);
+
                     break;
                 case 4:
                     consultarConvocatoria(controlador);
@@ -41,6 +45,7 @@ public class Menu {
                 case 7:
                     break;
                 case 8:
+                    asociarEnunciado(controlador);
                     break;
             }
         } while (opc != 9);
@@ -50,18 +55,39 @@ public class Menu {
         UnidadDidactica ud = new UnidadDidactica();
         ud.setDatos();
         controlador.crearUnidadDidactica(ud);
-        
+
     }
 
-    private void crearConvocatoria(Controlador controlador) throws ExcepcionCreacion {
-        ConvocatoriaExamen ce = new ConvocatoriaExamen();
-        ce.setDatos();
-        controlador.crearConvocatoria(ce);
+    private void crearConvocatoria(Controlador controlador) {
+        try {
+            ConvocatoriaExamen ce = new ConvocatoriaExamen();
+            ce.setDatos();
+            controlador.crearConvocatoria(ce);
+        } catch (ExcepcionCreacion ex) {
+            ex.mostrarError();
+        }
     }
 
-    private void consultarConvocatoria(Controlador controlador) throws ExcepcionConsultar {
-        String convocatoria = Utilidades.introducirCadena("Introduce la convocatoria deseada");
-        ConvocatoriaExamen ce = controlador.consultarConvocatoria(convocatoria);
-        ce.toString();
+    private void consultarConvocatoria(Controlador controlador) {
+        try {
+            String convocatoria = Utilidades.introducirCadena("Introduce la convocatoria deseada:");
+            ConvocatoriaExamen ce = controlador.consultarConvocatoria(convocatoria);
+            System.out.println(ce.toString());
+        } catch (ExcepcionConsultar ex) {
+            ex.mostrarError();
+        }
+    }
+
+    private void asociarEnunciado(Controlador controlador) throws ExcepcionAsociar {
+        ConvocatoriaExamen conv;
+        int idEnum = Utilidades.leerInt("Introduce el enunciado deseado:");
+        Enunciado enun = controlador.consultarEnunciado(idEnum);
+        if (enun != null) {
+            String convocatoria = Utilidades.introducirCadena("Introduce la convocatoria:");
+            controlador.asociarEnunciado(idEnum, convocatoria);
+        } else {
+
+        }
+
     }
 }

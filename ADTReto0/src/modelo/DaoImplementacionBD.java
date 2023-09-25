@@ -13,7 +13,7 @@ import clases.UnidadDidactica;
  *
  * @author 2dam
  */
-public class DaoImplementacionBD implements Dao{
+public class DaoImplementacionBD implements Dao {
 
     @Override
     public void crearUnidadDidactica(UnidadDidactica ud) {
@@ -33,11 +33,16 @@ public class DaoImplementacionBD implements Dao{
     @Override
     public ConvocatoriaExamen consultarConvocatoria(String convocatoria) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    } 
+    }
 
     @Override
     public Enunciado consultarEnunciado(int idenunciado) {
+        return new Enunciado();
+    }
+
+    @Override
+    public void asociarEnunciado(int idEnunciado, String convocatoria) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
