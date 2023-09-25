@@ -71,7 +71,7 @@ public class UnidadDidactica {
     }
     
     public void setDatos(){
-        this.descripcion = utilidades.Utilidades.introducirCadena("Introduce la descripción");
+        this.id = utilidades.Utilidades.leerInt("Introduce el Id:");
         this.acronimo = utilidades.Utilidades.introducirCadena("Introduce el acrónimo:");
         this.titulo = utilidades.Utilidades.introducirCadena("Introduce el título:");
         this.evaluacion = utilidades.Utilidades.introducirCadena("Introduce la evaluación:");

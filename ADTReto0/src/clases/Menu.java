@@ -44,6 +44,6 @@ public class Menu {
     private void crearUnidadDidactica(Controlador controlador) {
         UnidadDidactica ud = new UnidadDidactica();
         ud.setDatos();
-        
+        controlador.crearUnidadDidactica(ud);
     }
 }

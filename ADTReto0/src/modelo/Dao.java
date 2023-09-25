@@ -45,7 +45,7 @@ public interface Dao {
      * @param idenunciado
      * @return 
      */
-    public Enunciado consultarEnunciado(String idenunciado);
+    public Enunciado consultarEnunciado(int idenunciado);
     
     
 }
