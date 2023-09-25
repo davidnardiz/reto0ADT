@@ -40,4 +40,9 @@ public class DaoImplementacionBD implements Dao{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+     public boolean asociarEnunciadoAUnidad(int idUnidadDidactica, int idEnunciado, String idConvocatoria) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }

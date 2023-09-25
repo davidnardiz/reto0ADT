@@ -20,7 +20,7 @@ public class Menu {
         int opc;
 
         do {
-            opc = utilidades.Utilidades.leerInt("Introduce una opción: \n 1.Crear unidad didáctica. \n 2.Crear convocatoria. \n 3.Crear enunciado. \n 4.Consultar convocatoria. \n 5.Consultar enunciado. \n 6.Visualizar enunciado. \n 7.Asociar enunciado. \n 8.Asociar convocatoria.");
+            opc = utilidades.Utilidades.leerInt("Introduce una opción: \n 1.Crear unidad didáctica. \n 2.Crear convocatoria. \n 3.Crear enunciado. \n 4.Consultar convocatoria. \n 5.Consultar enunciado. \n 6.Visualizar enunciado. \n 7.Asociar enunciado.");
 
             switch (opc) {
                 case 1:
@@ -33,16 +33,16 @@ public class Menu {
                     crearEnunciado(controlador);
                     break;
                 case 4:
-                    consultarConvocatoria(controlador);
+                    consultarConvocatoria();
                     break;
                 case 5:
-                    consultarEnunciado(controlador);
+                    consultarEnunciado();
                     break;
                 case 6:
+                    visualizarEnunciado(controlador);
                     break;
                 case 7:
-                    break;
-                case 8:
+                    asociarEnunciado(controlador);
                     break;
             }
         } while (opc != 9);
@@ -88,7 +88,7 @@ public class Menu {
      * Después se verifica si la convocatoria existe: si existe se la devuelve al usuario, sino le informa de que no existe.
      * @param controlador 
      */
-    private void consultarConvocatoria(Controlador controlador) {
+    private void consultarConvocatoria() {
     String idConvocatoria = utilidades.Utilidades.introducirCadena("Por favor, introduce identificador de la convocatoria: ");
     ConvocatoriaExamen convocatoria = controlador.consultarConvocatoria(idConvocatoria);
     if (convocatoria != null) {
@@ -103,8 +103,8 @@ public class Menu {
      * Después se verifica si el enunciado existe: si existe se lo devuelve al usuario, sino le informa de que no existe.
      * @param controlador 
      */
-    private void consultarEnunciado(Controlador controlador) {
-    String idEnunciado = utilidades.Utilidades.introducirCadena("Por favor introduce identificador de la convocatoria: ");
+    private void consultarEnunciado() {
+    String idEnunciado = utilidades.Utilidades.introducirCadena("Por favor introduce identificador del enunciado: ");
     Enunciado enunciado = controlador.consultarEnunciado(idEnunciado);
     if (enunciado != null) {
         System.out.println("Detalles del enunciado:");
@@ -131,5 +131,26 @@ public class Menu {
         System.out.println("El enunciado no se encontró.");
     }
 }
+  
+    /**
+     * Se solicita al usuario que introduzca el id de la convocatoria a la que dese asociar el anunciado.
+     * Si la convocatoria existe, se confirma por consola que se han asociado. Si no existe, se le informa al usuario
+     * por consola de que la convocatoria introducida no existe.
+     * @param controlador
+     */
+   private void asociarEnunciado(Controlador controlador) {
 
+    String Convocatoria = utilidades.Utilidades.introducirCadena("Introduce el ID de la unidad didáctica: ");
+    int idEnunciado = utilidades.Utilidades.leerInt("Introduce el ID del enunciado: ");
+
+
+    Enunciado enunciado = controlador.consultarEnunciado();
+
+
+    if (enunciado != null) {
+
+        String idConvocatoria = convocatoria.getConvocatoria();
+
+    }
+   }
 }
