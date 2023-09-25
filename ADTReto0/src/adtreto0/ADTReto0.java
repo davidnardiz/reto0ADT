@@ -22,5 +22,5 @@ public class ADTReto0 {
         Menu menu = new Menu();
         menu.visualizarMenu(new Controlador());
     }
-    
+
 }

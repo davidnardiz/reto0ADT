@@ -24,6 +24,7 @@ public class Menu {
                     crearUnidadDidactica(controlador);
                     break;
                 case 2:
+                    crearConvocatoria(controlador);
                     break;
                 case 3:
                     break;
@@ -36,6 +37,7 @@ public class Menu {
                 case 7:
                     break;
                 case 8:
+                    asociarEnunciado(controlador);
                     break;
             }
         } while (opc != 9);
