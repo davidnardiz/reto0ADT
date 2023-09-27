@@ -6,7 +6,9 @@
 package adtreto0;
 
 import clases.Menu;
-import sun.applet.Main;
+import excepciones.ExcepcionAsociar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,9 +20,13 @@ public class ADTReto0 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Menu menu = new Menu();
-        menu.visualizarMenu(new Controlador());
+        try {
+            // TODO code application logic here
+            Menu menu = new Menu();
+            menu.visualizarMenu(new Controlador());
+        } catch (ExcepcionAsociar ex) {
+            Logger.getLogger(ADTReto0.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

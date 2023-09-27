@@ -9,6 +9,7 @@ import clases.ConvocatoriaExamen;
 import clases.Dificultad;
 import clases.Enunciado;
 import clases.UnidadDidactica;
+import excepciones.ExcepcionAsociar;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,6 +26,7 @@ import java.util.logging.Logger;
 public class DaoImplementacionBD implements Dao {
 
     private String insertQueryUD = "INSERT INTO unidad (id, acronimo, titulo, evaluacion, descripcion) VALUES (?, ?, ?, ?, ?)";
+    private String insertQueryUDE = "INSERT INTO unidad_enunciado (unidads_id, enunciados_id) VALUES (?, ?)";
     private String insertQueryE = "INSERT INTO enunciado (id, descripcion, nivel, disponible, ruta) VALUES (?, ?, ?, ?, ?)";
     private String selecQueryE = "SELECT * FROM enunciado WHERE id = ?";
 
@@ -66,6 +68,7 @@ public class DaoImplementacionBD implements Dao {
     @Override
     public void crearUnidadDidactica(UnidadDidactica ud) {
         openConnection();
+        Enunciado en = null;
         try {
             stmt = conex.prepareStatement(insertQueryUD);
             stmt.setInt(1, ud.getId());
@@ -75,6 +78,20 @@ public class DaoImplementacionBD implements Dao {
             stmt.setString(5, ud.getDescripcion());
 
             stmt.executeUpdate();
+            
+            String opc = utilidades.Utilidades.introducirCadena("¿Quieres asignarle un Enunciado a la Unidad Didactica? S/N");
+            if (opc.equalsIgnoreCase("S")) {
+                
+                do {                    
+                    int idEn = utilidades.Utilidades.leerInt("Id de la Enunciado");
+                    en = consultarEnunciado(idEn);
+                } while (en == null);
+                
+                 stmt = conex.prepareStatement(insertQueryUDE);
+                 stmt.setInt(1, ud.getId());
+                 stmt.setInt(2, en.getId());
+                 stmt.executeUpdate();                 
+            }
 
             stmt.close();
             conex.close();
@@ -94,6 +111,7 @@ public class DaoImplementacionBD implements Dao {
     @Override
     public void crearEnunciado(Enunciado e) {
         openConnection();
+        
         try {
             stmt = conex.prepareStatement(insertQueryE);
             stmt.setInt(1, e.getId());
@@ -115,8 +133,11 @@ public class DaoImplementacionBD implements Dao {
                 stmt.setInt(4, 0);
             }
             stmt.setString(5, e.getRuta());
-
             stmt.executeUpdate();
+            
+            
+
+            
 
             stmt.close();
             conex.close();
@@ -151,5 +172,10 @@ public class DaoImplementacionBD implements Dao {
         }
         return en;
         }
+
+    @Override
+    public void asociarEnunciado(int idEnunciado, String convocatoria) throws ExcepcionAsociar {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
