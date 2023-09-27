@@ -12,7 +12,16 @@ import excepciones.ExcepcionAsociar;
 import excepciones.ExcepcionConsultar;
 import excepciones.ExcepcionCreacion;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import utilidades.MiObjectOutputStream;
+import utilidades.Utilidades;
 
 /**
  *
@@ -29,11 +38,30 @@ public class DaoImplementacionFich implements Dao{
 
     //fich
     @Override
-    public void crearConvocatoria(ConvocatoriaExamen ce) {
-        ObjectOutputStream oos;
-        
-        
-        
+    public void crearConvocatoria(ConvocatoriaExamen ce) throws ExcepcionCreacion {
+        ObjectOutputStream oos = null;
+
+        try {
+            if (!fich.exists()) {
+                oos = new MiObjectOutputStream(new FileOutputStream(fich, true));
+            } else {
+                oos = new ObjectOutputStream(new FileOutputStream(fich));
+            }
+
+            oos.writeObject(ce);
+
+        } catch (FileNotFoundException ex) {
+            throw new ExcepcionCreacion("Ha habido un fallo en la creación");
+        } catch (IOException ex) {
+            throw new ExcepcionCreacion("Ha habido un fallo en la creación");
+        } finally {
+            try {
+                oos.flush();
+                oos.close();
+            } catch (IOException ex) {
+                throw new ExcepcionCreacion("Ha habido un fallo en la creación");
+            }
+        }
     }
 
     @Override

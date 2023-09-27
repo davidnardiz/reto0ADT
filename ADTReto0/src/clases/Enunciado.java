@@ -98,7 +98,7 @@ public class Enunciado {
         this.disponible = utilidades.Utilidades.esBoolean("¿Está disponible?");
         this.ruta = utilidades.Utilidades.introducirCadena("Introduce la ruta:");
 
-        String dif = utilidades.Utilidades.leerStringArray(dificultades, "Introduce la dificultad");
+        String dif = utilidades.Utilidades.leerStringArray(dificultades, "Introduce la dificultad (Alta/Media/Baja)");
         if (dif.equalsIgnoreCase("Alta")) {
             this.dificultad = Dificultad.ALTA;
         } else if (dif.equalsIgnoreCase("Media")) {
